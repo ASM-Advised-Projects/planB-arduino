@@ -1,0 +1,418 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<module moduleId="prefix0000_Dual_MC33926_2022fa9473d77b77aba72444f4bccb82_6" referenceFile="mystery_part_sip_3_100mil.fzp">
+ <version>4</version>
+ <author>Eagle Nbg</author>
+ <title>Dual MC33926 H-Bridge</title>
+ <label>Dual MC33926 H-Bridge</label>
+ <date>So Jun 15 2014</date>
+ <tags>
+  <tag>fritzing core</tag>
+  <tag>Dual MC33926 H-Bridge</tag>
+ </tags>
+ <properties>
+  <property name="family">Dual MC33926 H-Bridge</property>
+  <property name="variant">variant 4</property>
+  <property name="package">THT</property>
+  <property name="hole size"></property>
+  <property name="layer"></property>
+  <property name="editable pin labels">false</property>
+  <property name="layout">Single Row</property>
+  <property name="chip label">MC33926</property>
+  <property name="part number"></property>
+  <property name="pin spacing">100mil</property>
+  <property name="pins">3</property>
+ </properties>
+ <taxonomy>part.mystery.magical.3.pins</taxonomy>
+ <description>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
+p, li { white-space: pre-wrap; }
+&lt;/style>&lt;/head>&lt;body style=" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;">
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Dual brushed DC motor driver, based on Freescale’s MC33926 full H-bridge, has a wide operating range of 5 – 28 V and can deliver almost 3 A continuously (5 A peak) to each of its two motor channels. The MC33926 works with 3 – 5 V logic levels, supports ultrasonic (up to 20 kHz) PWM, and features current feedback, under-voltage protection, over-current protection, and over-temperature protection.&lt;/p>&lt;/body>&lt;/html></description>
+ <views>
+  <iconView>
+   <layers image="icon/prefix0000_Dual_MC33926_4b476a711e8207ab11fa3821f1cab94c_1_icon.svg">
+    <layer layerId="icon"/>
+   </layers>
+  </iconView>
+  <breadboardView>
+   <layers image="breadboard/prefix0000_Dual_MC33926_4b476a711e8207ab11fa3821f1cab94c_1_breadboard.svg">
+    <layer layerId="breadboard"/>
+   </layers>
+  </breadboardView>
+  <schematicView>
+   <layers image="schematic/prefix0000_Dual_MC33926_4b476a711e8207ab11fa3821f1cab94c_1_schematic.svg">
+    <layer layerId="schematic"/>
+   </layers>
+  </schematicView>
+  <pcbView>
+   <layers image="pcb/prefix0000_Dual_MC33926_4b476a711e8207ab11fa3821f1cab94c_1_pcb.svg">
+    <layer layerId="silkscreen"/>
+    <layer layerId="copper0"/>
+    <layer layerId="copper1"/>
+   </layers>
+  </pcbView>
+ </views>
+ <connectors>
+  <connector type="female" id="connector0" name="M2 FB">
+   <description>The FB output provides analog current-sense feedback of approximately 525 mV per amp.</description>
+   <views>
+    <breadboardView>
+     <p svgId="connector0pin" layer="breadboard" terminalId="connector0terminal"/>
+    </breadboardView>
+    <schematicView>
+     <p svgId="connector0pin" layer="schematic" terminalId="connector0terminal"/>
+    </schematicView>
+    <pcbView>
+     <p svgId="connector0pin" layer="copper0"/>
+     <p svgId="connector0pin" layer="copper1"/>
+    </pcbView>
+   </views>
+  </connector>
+  <connector type="female" id="connector1" name="M2 SF">
+   <description>Status flag output: an over-current (short circuit) or over-temperature event will cause SF to be latched LOW. If either of the disable pins (D1 or D2) are disabling the outputs, SF will also be LOW. Otherwise, this pin is weakly pulled high. This allows the two SF pins on the board to be tied together and connected to a single MCU input.</description>
+   <views>
+    <breadboardView>
+     <p svgId="connector1pin" layer="breadboard" terminalId="connector1terminal"/>
+    </breadboardView>
+    <schematicView>
+     <p svgId="connector1pin" layer="schematic" terminalId="connector1terminal"/>
+    </schematicView>
+    <pcbView>
+     <p svgId="connector1pin" layer="copper0"/>
+     <p svgId="connector1pin" layer="copper1"/>
+    </pcbView>
+   </views>
+  </connector>
+  <connector type="female" id="connector2" name="M2 PWM D1">
+   <description>Disable input: when D1 is high, OUT1 and OUT2 are set to high impedance. A D1 PWM duty cycle of 70% gives a motor duty cycle of 30%. Typically, only one of the two disable pins is used, but the default is for both disable pins to be active.</description>
+   <views>
+    <breadboardView>
+     <p svgId="connector2pin" layer="breadboard" terminalId="connector2terminal"/>
+    </breadboardView>
+    <schematicView>
+     <p svgId="connector2pin" layer="schematic" terminalId="connector2terminal"/>
+    </schematicView>
+    <pcbView>
+     <p svgId="connector2pin" layer="copper0"/>
+     <p svgId="connector2pin" layer="copper1"/>
+    </pcbView>
+   </views>
+  </connector>
+  <connector type="female" id="connector4" name="M2 PWM D2">
+   <description>Inverted disable input: when D2 is low, OUT1 and OUT2 are set to high impedance. A D2 PWM duty cycle of 70% gives a motor duty cycle of 70%. Typically, only one of the two disable pins is used, but the default is for both disable pins to be active.</description>
+   <views>
+    <breadboardView>
+     <p svgId="connector4pin" layer="breadboard"/>
+    </breadboardView>
+    <schematicView>
+     <p svgId="connector4pin" layer="schematic"/>
+    </schematicView>
+    <pcbView>
+     <p svgId="connector4pin" layer="copper0"/>
+     <p svgId="connector4pin" layer="copper1"/>
+    </pcbView>
+   </views>
+  </connector>
+  <connector type="female" id="connector5" name="M2 IN1">
+   <description>The logic input control of OUT1. PWM can be applied to this pin (typically done with both disable lines inactive).</description>
+   <views>
+    <breadboardView>
+     <p svgId="connector5pin" layer="breadboard"/>
+    </breadboardView>
+    <schematicView>
+     <p svgId="connector5pin" layer="schematic"/>
+    </schematicView>
+    <pcbView>
+     <p svgId="connector5pin" layer="copper0"/>
+     <p svgId="connector5pin" layer="copper1"/>
+    </pcbView>
+   </views>
+  </connector>
+  <connector type="female" id="connector6" name="M2 IN2">
+   <description>pin 6</description>
+   <views>
+    <breadboardView>
+     <p svgId="connector6pin" layer="breadboard"/>
+    </breadboardView>
+    <schematicView>
+     <p svgId="connector6pin" layer="schematic"/>
+    </schematicView>
+    <pcbView>
+     <p svgId="connector6pin" layer="copper0"/>
+     <p svgId="connector6pin" layer="copper1"/>
+    </pcbView>
+   </views>
+  </connector>
+  <connector type="female" id="connector7" name="INV">
+   <description>A logical high value inverts the meaning of IN1 and IN2 for both motor drivers.</description>
+   <views>
+    <breadboardView>
+     <p svgId="connector7pin" layer="breadboard"/>
+    </breadboardView>
+    <schematicView>
+     <p svgId="connector7pin" layer="schematic"/>
+    </schematicView>
+    <pcbView>
+     <p svgId="connector7pin" layer="copper0"/>
+     <p svgId="connector7pin" layer="copper1"/>
+    </pcbView>
+   </views>
+  </connector>
+  <connector type="female" id="connector8" name="SLEW">
+   <description>Output slew rate selection input. A logical LOW results in a slow output rise time (1.5 μs – 6 μs). A logical HIGH selects a fast output rise time (0.2 μs – 1.45 μs). This pin should be set HIGH for high-frequency (over 10 kHz) PWM. This pin determines the slew rate mode for both motor driver ICs.</description>
+   <views>
+    <breadboardView>
+     <p svgId="connector8pin" layer="breadboard"/>
+    </breadboardView>
+    <schematicView>
+     <p svgId="connector8pin" layer="schematic"/>
+    </schematicView>
+    <pcbView>
+     <p svgId="connector8pin" layer="copper0"/>
+     <p svgId="connector8pin" layer="copper1"/>
+    </pcbView>
+   </views>
+  </connector>
+  <connector type="female" id="connector9" name="EN">
+   <description>pin 9</description>
+   <views>
+    <breadboardView>
+     <p svgId="connector9pin" layer="breadboard"/>
+    </breadboardView>
+    <schematicView>
+     <p svgId="connector9pin" layer="schematic"/>
+    </schematicView>
+    <pcbView>
+     <p svgId="connector9pin" layer="copper0"/>
+     <p svgId="connector9pin" layer="copper1"/>
+    </pcbView>
+   </views>
+  </connector>
+  <connector type="female" id="connector10" name="M1 FB">
+   <description>The FB output provides analog current-sense feedback of approximately 525 mV per amp.</description>
+   <views>
+    <breadboardView>
+     <p svgId="connector10pin" layer="breadboard"/>
+    </breadboardView>
+    <schematicView>
+     <p svgId="connector10pin" layer="schematic"/>
+    </schematicView>
+    <pcbView>
+     <p svgId="connector10pin" layer="copper0"/>
+     <p svgId="connector10pin" layer="copper1"/>
+    </pcbView>
+   </views>
+  </connector>
+  <connector type="female" id="connector11" name="M1 SF">
+   <description>Status flag output: an over-current (short circuit) or over-temperature event will cause SF to be latched LOW. If either of the disable pins (D1 or D2) are disabling the outputs, SF will also be LOW. Otherwise, this pin is weakly pulled high. This allows the two SF pins on the board to be tied together and connected to a single MCU input.</description>
+   <views>
+    <breadboardView>
+     <p svgId="connector11pin" layer="breadboard"/>
+    </breadboardView>
+    <schematicView>
+     <p svgId="connector11pin" layer="schematic"/>
+    </schematicView>
+    <pcbView>
+     <p svgId="connector11pin" layer="copper0"/>
+     <p svgId="connector11pin" layer="copper1"/>
+    </pcbView>
+   </views>
+  </connector>
+  <connector type="female" id="connector12" name="M1 PWM D1">
+   <description>pin 12</description>
+   <views>
+    <breadboardView>
+     <p svgId="connector12pin" layer="breadboard"/>
+    </breadboardView>
+    <schematicView>
+     <p svgId="connector12pin" layer="schematic"/>
+    </schematicView>
+    <pcbView>
+     <p svgId="connector12pin" layer="copper0"/>
+     <p svgId="connector12pin" layer="copper1"/>
+    </pcbView>
+   </views>
+  </connector>
+  <connector type="female" id="connector13" name="M1 PWM D2">
+   <description>Inverted disable input: when D2 is low, OUT1 and OUT2 are set to high impedance. A D2 PWM duty cycle of 70% gives a motor duty cycle of 70%. Typically, only one of the two disable pins is used, but the default is for both disable pins to be active.</description>
+   <views>
+    <breadboardView>
+     <p svgId="connector13pin" layer="breadboard"/>
+    </breadboardView>
+    <schematicView>
+     <p svgId="connector13pin" layer="schematic"/>
+    </schematicView>
+    <pcbView>
+     <p svgId="connector13pin" layer="copper0"/>
+     <p svgId="connector13pin" layer="copper1"/>
+    </pcbView>
+   </views>
+  </connector>
+  <connector type="female" id="connector14" name="M1 IN1">
+   <description>The logic input control of OUT1. PWM can be applied to this pin (typically done with both disable lines inactive).</description>
+   <views>
+    <breadboardView>
+     <p svgId="connector14pin" layer="breadboard"/>
+    </breadboardView>
+    <schematicView>
+     <p svgId="connector14pin" layer="schematic"/>
+    </schematicView>
+    <pcbView>
+     <p svgId="connector14pin" layer="copper0"/>
+     <p svgId="connector14pin" layer="copper1"/>
+    </pcbView>
+   </views>
+  </connector>
+  <connector type="female" id="connector15" name="M1 IN2">
+   <description>pin 15</description>
+   <views>
+    <breadboardView>
+     <p svgId="connector15pin" layer="breadboard"/>
+    </breadboardView>
+    <schematicView>
+     <p svgId="connector15pin" layer="schematic"/>
+    </schematicView>
+    <pcbView>
+     <p svgId="connector15pin" layer="copper0"/>
+     <p svgId="connector15pin" layer="copper1"/>
+    </pcbView>
+   </views>
+  </connector>
+  <connector type="female" id="connector16" name="VDD">
+   <description>pin 16</description>
+   <views>
+    <breadboardView>
+     <p svgId="connector16pin" layer="breadboard"/>
+    </breadboardView>
+    <schematicView>
+     <p svgId="connector16pin" layer="schematic"/>
+    </schematicView>
+    <pcbView>
+     <p svgId="connector16pin" layer="copper0"/>
+     <p svgId="connector16pin" layer="copper1"/>
+    </pcbView>
+   </views>
+  </connector>
+  <connector type="female" id="connector17" name="GND">
+   <description>pin 17</description>
+   <views>
+    <breadboardView>
+     <p svgId="connector17pin" layer="breadboard"/>
+    </breadboardView>
+    <schematicView>
+     <p svgId="connector17pin" layer="schematic"/>
+    </schematicView>
+    <pcbView>
+     <p svgId="connector17pin" layer="copper0"/>
+     <p svgId="connector17pin" layer="copper1"/>
+    </pcbView>
+   </views>
+  </connector>
+  <connector type="female" id="connector18" name="VIN">
+   <description>pin 18</description>
+   <views>
+    <breadboardView>
+     <p svgId="connector18pin" layer="breadboard"/>
+    </breadboardView>
+    <schematicView>
+     <p svgId="connector18pin" layer="schematic"/>
+    </schematicView>
+    <pcbView>
+     <p svgId="connector18pin" layer="copper0"/>
+     <p svgId="connector18pin" layer="copper1"/>
+    </pcbView>
+   </views>
+  </connector>
+  <connector type="female" id="connector19" name="M1 OUT1">
+   <description>The motor output pin controlled by IN1.</description>
+   <views>
+    <breadboardView>
+     <p svgId="connector19pin" layer="breadboard"/>
+    </breadboardView>
+    <schematicView>
+     <p svgId="connector19pin" layer="schematic"/>
+    </schematicView>
+    <pcbView>
+     <p svgId="connector19pin" layer="copper0"/>
+     <p svgId="connector19pin" layer="copper1"/>
+    </pcbView>
+   </views>
+  </connector>
+  <connector type="female" id="connector20" name="M1 OUT2">
+   <description>The motor output pin controlled by IN2.</description>
+   <views>
+    <breadboardView>
+     <p svgId="connector20pin" layer="breadboard"/>
+    </breadboardView>
+    <schematicView>
+     <p svgId="connector20pin" layer="schematic"/>
+    </schematicView>
+    <pcbView>
+     <p svgId="connector20pin" layer="copper0"/>
+     <p svgId="connector20pin" layer="copper1"/>
+    </pcbView>
+   </views>
+  </connector>
+  <connector type="female" id="connector21" name="GND">
+   <description>pin 21</description>
+   <views>
+    <breadboardView>
+     <p svgId="connector21pin" layer="breadboard"/>
+    </breadboardView>
+    <schematicView>
+     <p svgId="connector21pin" layer="schematic"/>
+    </schematicView>
+    <pcbView>
+     <p svgId="connector21pin" layer="copper0"/>
+     <p svgId="connector21pin" layer="copper1"/>
+    </pcbView>
+   </views>
+  </connector>
+  <connector type="female" id="connector22" name="VIN (5-28)">
+   <description>pin 22</description>
+   <views>
+    <breadboardView>
+     <p svgId="connector22pin" layer="breadboard"/>
+    </breadboardView>
+    <schematicView>
+     <p svgId="connector22pin" layer="schematic"/>
+    </schematicView>
+    <pcbView>
+     <p svgId="connector22pin" layer="copper0"/>
+     <p svgId="connector22pin" layer="copper1"/>
+    </pcbView>
+   </views>
+  </connector>
+  <connector type="female" id="connector23" name="M2 OUT1">
+   <description>The motor output pin controlled by IN1.</description>
+   <views>
+    <breadboardView>
+     <p svgId="connector23pin" layer="breadboard"/>
+    </breadboardView>
+    <schematicView>
+     <p svgId="connector23pin" layer="schematic"/>
+    </schematicView>
+    <pcbView>
+     <p svgId="connector23pin" layer="copper0"/>
+     <p svgId="connector23pin" layer="copper1"/>
+    </pcbView>
+   </views>
+  </connector>
+  <connector type="female" id="connector24" name="M2 OUT2">
+   <description>The motor output pin controlled by IN2.</description>
+   <views>
+    <breadboardView>
+     <p svgId="connector24pin" layer="breadboard"/>
+    </breadboardView>
+    <schematicView>
+     <p svgId="connector24pin" layer="schematic"/>
+    </schematicView>
+    <pcbView>
+     <p svgId="connector24pin" layer="copper0"/>
+     <p svgId="connector24pin" layer="copper1"/>
+    </pcbView>
+   </views>
+  </connector>
+ </connectors>
+ <url>http://www.pololu.com/product/1213/</url>
+</module>
