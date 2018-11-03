@@ -37,7 +37,7 @@ void setup(void){
       md.init(); // intialize the motors pin;
 
   // *** Initialize Serial Communication ***
-     Serial.begin(9600);     
+     Serial.begin(11560);     
      Serial.println("Dual MC 339256 shields program is starting;");
      
   // *** Take Initial Readings ***  

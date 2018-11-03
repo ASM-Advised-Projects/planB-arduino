@@ -7,6 +7,7 @@
     unsigned char _M1SF;
     unsigned char _M1FB;
     //unsigned char _EN1;
+    unsigned char _encoder;
   
 /********************
  ** Setup Function **
@@ -20,6 +21,7 @@ void setup(void){
     _D1 = 7;
     _M1SF = 12;
     _M1FB = A0;
+    _encoder = A1;
 
   pinMode(_M1IN1, OUTPUT);
   pinMode(_M1IN2, OUTPUT);  
@@ -27,6 +29,7 @@ void setup(void){
   pinMode(_M1SF, INPUT);
   pinMode(_M1FB, INPUT);
   pinMode(_D1, OUTPUT); digitalWrite(_D1, LOW);
+  pinMode(_encoder, INPUT);
 
     //#ifdef DUALMC33926MOTORSHIELD_TIMER1_AVAILABLE
     //if (_M1PWM_D1 == _M1PWM_TIMER1_PIN)
@@ -57,22 +60,25 @@ void setup(void){
  *******************/
 void loop(void){
   //PUT YOUR MAIN CODE HERE, TO RUN REPEATEDLY
-  
+  /*
   //testMotor1();
   Serial.println("motor 1 is driving");
   setM1aSpeed(200);
-  delay(2000);  //delay 2 seconds
+  Serial.println(analogRead(_encoder));
+  delay(500);  //delay 2 seconds
   setM1aSpeed(0);
+  Serial.println(analogRead(_encoder));
   Serial.println("motor 1 is stop");
   delay(2000);  //delay 2 seconds
   setM1aSpeed(-200);
-  delay(2000);  //delay 2 seconds
-  setM1aSpeed(-125);
-  delay(5000);
-  Serial.println("slower!");
+  Serial.println(analogRead(_encoder));
+  delay(500);  //delay 2 seconds
   setM1aSpeed(0);
   Serial.println("motor 1 is stop");
-  delay(2000);  //delay 2 seconds
+  Serial.println(analogRead(_encoder));
+  delay(2000);  //delay 2 seconds*/
+  Serial.println(analogRead(_encoder));
+  delay(200);
 } // end loop() function
 
 /****************************

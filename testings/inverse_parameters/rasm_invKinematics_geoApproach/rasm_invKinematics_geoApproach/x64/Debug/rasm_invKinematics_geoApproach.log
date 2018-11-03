@@ -1,0 +1,5 @@
+﻿  geometric_approach_1.cpp
+c:\users\farhan zainal\documents\github\asm-planb_arduino\testings\inverse_parameters\rasm_invkinematics_geoapproach\rasm_invkinematics_geoapproach\geometric_approach_1.cpp(4): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\farhan zainal\documents\github\asm-planb_arduino\testings\inverse_parameters\rasm_invkinematics_geoapproach\rasm_invkinematics_geoapproach\geometric_approach_1.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\farhan zainal\documents\github\asm-planb_arduino\testings\inverse_parameters\rasm_invkinematics_geoapproach\rasm_invkinematics_geoapproach\geometric_approach_1.cpp(33): warning C4702: unreachable code
+  rasm_invKinematics_geoApproach.vcxproj -> C:\Users\farhan zainal\Documents\GitHub\asm-planB_arduino\testings\inverse_parameters\rasm_invKinematics_geoApproach\x64\Debug\rasm_invKinematics_geoApproach.exe
