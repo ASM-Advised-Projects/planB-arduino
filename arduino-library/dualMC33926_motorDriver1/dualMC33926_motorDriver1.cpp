@@ -9,19 +9,21 @@
 dualMC33926_motorDriver1::dualMC33926_motorDriver1()
 {
   // DEFAULT PIN MAP FOR MOTOR SHIELD 1
-  _M1IN1 = 2;
-  _M1IN2 = 3;
-  _M1PWM_D2 = 9;
-  _M1_D1 = 7;
-  _M1SF = 12;	// optional if wants to read status flag
-  _M1FB = A0;	// optional if wants to read current
+  _M1IN1 = 2; // PWM PIN 2
+  _M1IN2 = 3; // PWM PIN 3
+  // _M1PWM_D2 is connected to the GND
+  //_M1_D1 is conencted to the 5V power supply
+  // _M1SF = NO CONNECTION;	// optional if wants to read status flag
+  //_M1FB = NO CONENCTION;	// optional if wants to read current
   // EN pin is connected to the 5V supply
-  _M2IN1 = 4;
-  _M2IN2 = 5;
-  _M2PWM_D2 = 10;
-  _M2_D1 = 8;
-  _M2SF = 11;	// optional if wants to read status flag
-  _M2FB = A1;	// optional if wants to read current
+  // SLEW pin is NOT CONNECTED; default LOW
+
+  _M2IN1 = 4; // PWM PIN 4
+  _M2IN2 = 5; // PWM PIN 5
+  //_M2PWM_D2 = 10;
+  //_M2_D1 = 8;
+  //_M2SF = 11;	// optional if wants to read status flag
+  //_M2FB = A1;	// optional if wants to read current
 }
 
 // Public Methods //////////////////////////////////////////////////////////////
@@ -31,17 +33,17 @@ void dualMC33926_motorDriver1::init()
 	// intialization for motor shield 1
   pinMode(_M1IN1, OUTPUT);
   pinMode(_M1IN2, OUTPUT);
-  pinMode(_M1PWM_D2, OUTPUT);
-  pinMode(_M1_D1, OUTPUT); digitalWrite(_M1_D1, LOW);
-  pinMode(_M1SF, INPUT);
-  pinMode(_M1FB, INPUT);
+  //pinMode(_M1PWM_D2, OUTPUT);
+  //pinMode(_M1_D1, OUTPUT); digitalWrite(_M1_D1, LOW);
+  //pinMode(_M1SF, INPUT);
+  //pinMode(_M1FB, INPUT);
 
   pinMode(_M2IN1, OUTPUT);
   pinMode(_M2IN2, OUTPUT);
-  pinMode(_M2PWM_D2, OUTPUT);
-  pinMode(_M2_D1, OUTPUT); digitalWrite(_M2_D1, LOW);
-  pinMode(_M2SF, INPUT);
-  pinMode(_M2FB, INPUT);
+  //pinMode(_M2PWM_D2, OUTPUT);
+  //pinMode(_M2_D1, OUTPUT); digitalWrite(_M2_D1, LOW);
+  //pinMode(_M2SF, INPUT);
+  //pinMode(_M2FB, INPUT);
 } // end of public methods
 
 
@@ -50,7 +52,6 @@ void dualMC33926_motorDriver1::init()
 void dualMC33926_motorDriver1::setM1Speed(int speed)
 {
   unsigned char reverse = 0;
-
   if (speed < 0)
   {
     speed = -speed;  // Make speed a positive quantity
@@ -59,11 +60,9 @@ void dualMC33926_motorDriver1::setM1Speed(int speed)
   if (speed > 400)  // Max PWM dutycycle
     speed = 400;
 
-  digitalWrite(_M1PWM_D2, speed);
-
   if (reverse){
 	digitalWrite(_M1IN1, LOW);
-	digitalWrite(_M1IN2, HIGH);
+	analogWrite(_M1IN2, speed);
   }
 
   else if(speed == 0){
@@ -71,8 +70,8 @@ void dualMC33926_motorDriver1::setM1Speed(int speed)
 	  digitalWrite(_M1IN2, LOW);
   }
   else{
-    digitalWrite(_M1IN1, HIGH);
-	digitalWrite(_M1IN2, LOW);
+    analogWrite(_M1IN1, speed);
+	  digitalWrite(_M1IN2, LOW);
   }
 } // end of setM1Speed
 
@@ -80,7 +79,6 @@ void dualMC33926_motorDriver1::setM1Speed(int speed)
 void dualMC33926_motorDriver1::setM2Speed(int speed)
 {
 	unsigned char reverse = 0;
-
 	if (speed < 0)
 	{
 		speed = -speed;  // Make speed a positive quantity
@@ -89,11 +87,9 @@ void dualMC33926_motorDriver1::setM2Speed(int speed)
 	if (speed > 400)  // Max PWM dutycycle
 		speed = 400;
 
-	digitalWrite(_M2PWM_D2, speed);
-
 	if (reverse) {
 		digitalWrite(_M2IN1, LOW);
-		digitalWrite(_M2IN2, HIGH);
+		analogWrite(_M2IN2, speed);
 	}
 
 	else if (speed == 0) {
@@ -101,7 +97,7 @@ void dualMC33926_motorDriver1::setM2Speed(int speed)
 		digitalWrite(_M2IN2, LOW);
 	}
 	else {
-		digitalWrite(_M2IN1, HIGH);
+		analogWrite(_M2IN1, speed);
 		digitalWrite(_M2IN2, LOW);
 	}
 } // end of setM2Speed
@@ -114,35 +110,20 @@ void dualMC33926_motorDriver1::setSpeeds(int speedM1, int speedM2) {
 // ************** END OF SETTING MOTOR SPEED ************** //
 
 // ************** SETTING MOTOR BRAKE ************** //
-void dualMC33926_motorDriver1::setM1Brake(int brake) {
-	// normalize brake
-	if (brake < 0)
-	{
-		brake = -brake;
-	}
-	if (brake > 400)  // Max brake
-		brake = 400;
+void dualMC33926_motorDriver1::setM1Brake() {
 	digitalWrite(_M1IN1, LOW);
 	digitalWrite(_M1IN2, LOW);
-	digitalWrite(_M1PWM_D2, brake);
+	//digitalWrite(_M1PWM_D2, brake);
 } // end of setting brake for motor 1
 
-void dualMC33926_motorDriver1::setM2Brake(int brake) {
-	// normalize brake
-	if (brake < 0)
-	{
-		brake = -brake;
-	}
-	if (brake > 400)  // Max brake
-		brake = 400;
+void dualMC33926_motorDriver1::setM2Brake() {
 	digitalWrite(_M2IN1, LOW);
 	digitalWrite(_M2IN2, LOW);
-	digitalWrite(_M2PWM_D2, brake);
 } // end of setting brake for motor 2
 
-void dualMC33926_motorDriver1::setBrakes(int brake1,int brake2) {
-	setM1Brake(brake1);
-	setM2Brake(brake2);
+void dualMC33926_motorDriver1::setBrakes() {
+	setM1Brake();
+	setM2Brake();
 } // end setting brake for both motors
 // ************** END OF SETTING MOTOR BRAKE ************** //
 // ************** END OF SETTING MOTOR BRAKE ************** //
