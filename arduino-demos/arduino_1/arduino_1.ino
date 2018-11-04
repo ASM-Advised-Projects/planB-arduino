@@ -37,18 +37,16 @@ void setup(void){
  *******************/
 void loop(void){
   //PUT YOUR MAIN CODE HERE, TO RUN REPEATEDLY
- Serial.println("motor 1 is driving");
-  testMotor1();
-  delay(1000);
-  Serial.println("motor 2 is driving");
-  testMotor2();
-  Serial.println("both motors are stopping");
-  delay(2000);  //delay 2 seconds
+    for(int i = 0; i<100 ; i++){
+      md.setM1Speed(i);
+      delay(50);
+    }
+    md.setM1Brake();
 } // end loop() function
 
 /****************************
  ** User-Defined Functions **
- ****************************/
+ ****************************
 // create custom headings as necessary to clearly organize your sketch
 // e.g., Button functions, DC Motor functions, Servo functions, etc.
  void testMotor1(){ // for testing motor 1
@@ -62,4 +60,5 @@ void loop(void){
   delay(1500);
   md.setM2Brake(400);
  } // end of testing motor 2
+ */
 

@@ -23,8 +23,8 @@
  int oldEnc2 = 0;
  
  
- int enc1 = A0; 
- int enc2 = A1;
+ int enc1 = A2; 
+ int enc2 = A3;
 
   unsigned long t = micros();
 
@@ -121,8 +121,8 @@ void loop(void){
           M = constrain(M, -155, 155);
 
           // set speed to the elbow motor;
-          md.setM2Speed(M);
-          md.setM1Brake(400);
+          md.setM1Speed(M);
+          md.setM1Brake();
     
           // print values
           //Serial.print("The M is\t"); Serial.println(M);
@@ -144,8 +144,8 @@ void loop(void){
     }
     Serial.println("Done");
     Serial.print("Final Position: "); Serial.println(myEnc2); 
-    md.setM2Brake(400);
-    md.setM2Speed(0);
+    md.setM1Brake();
+    md.setM1Speed(0);
     c == '9';   
   } // end for c = 2
 
@@ -172,8 +172,8 @@ void loop(void){
       double M = V*155/5.0;
       M = constrain(M, -155, 155);
       //md.setM1Speed(M);
-      md.setM2Speed(M);
-      md.setM1Brake(400);
+      md.setM1Speed(M);
+      md.setM1Brake();
 
       //Serial.print("The M is\t");      Serial.println(M);
       //Serial.print("The error: ");      Serial.println(error);
@@ -190,15 +190,18 @@ void loop(void){
     
     Serial.println("Done");
     Serial.print("Final Position: "); Serial.println(myEnc2); 
-    md.setM2Brake(400);
-    md.setM2Speed(0);
+    md.setM1Brake();
+    md.setM1Speed(0);
     c == '9';   
   } // end for c = 3
 
   if(c == '4'){
+    while(c == '4'){
     encoderRead();
-    Serial.print("The current Position: ");Serial.println(myEnc2);
-    delay(500);
+    //Serial.print("The current Position: ");Serial.println(myEnc1);
+    //delay(500);
+    //readCommand();
+    }
   }
 
   if(c == '5'){
@@ -218,7 +221,7 @@ void loop(void){
  ** User-Defined Functions **
  ****************************/
 
- void testMotor1(){ // for testing motor 1
+/* void testMotor1(){ // for testing motor 1
   md.setM1Speed(255); // max value 400;
   md.setM2Brake(400);
   delay(500);
@@ -243,7 +246,7 @@ void loop(void){
   delay(500);
   md.setM2Speed(0); // stop the motor
   delay(500);
- } // end of testing motor 2
+ } // end of testing motor 2*/
 
   void readCommand(){
     if(Serial.available() >0){
@@ -255,9 +258,9 @@ void loop(void){
   void encoderRead(){
     myEnc1 = analogRead(enc1);
     myEnc2 = analogRead(enc2);
-    /*Serial.print("Encoder 1: ");
+   Serial.print("Encoder 1: ");
     Serial.print(myEnc1);
     Serial.print("\tEncoder 2: ");
-    Serial.println(myEnc2);*/
+    Serial.println(myEnc2);
   } // end of encoder read
 
