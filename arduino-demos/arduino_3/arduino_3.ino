@@ -16,15 +16,15 @@
  ** Global Variables ***
  ***********************/
  char comm ='a'; //command to run == "o" 
- char c;
+ char c = '9';
  int myEnc1; // the reading value of shoulder encoder
  int oldEnc1 = 0;
  int myEnc2; // the reading value of the elbow encoder
  int oldEnc2 = 0;
  
  
- int enc1 = A2; 
- int enc2 = A3;
+ int enc1 = A1; 
+ int enc2 = A2;
 
   unsigned long t = micros();
 
@@ -82,12 +82,12 @@ void loop(void){
     double tOld = 0;    // set time old = 0 secs
     encoderRead();      // read the encoder position
     int intDesPos = myEnc2 + 40;    // set desired position for RASM to move
+    double intDesAngle = intDesPos*0.35;
     int currentPos = myEnc2;    // set current position to elbow encoder reading
     int posOld = currentPos;    // set old position of elbow encoder to current position
     double angle = currentPos*0.35;   // current angle of the encoder
     double oldAngle = angle;          // the angle position the encoder
-    double vel = 0;   // the elbow velocity
-    double oldVel = 0;  // the elbow old velocity
+    int i = 0;
 
     // print to Serial monitor the starting position and the end position of elbow position
     Serial.print("The desired Position: \t");Serial.print(intDesPos); Serial.print("\tStarting Position: "); Serial.println(myEnc2); 
@@ -97,6 +97,7 @@ void loop(void){
       Serial.println("Please enter a new value OR adjust the starting position of the elbow");
       
     } else{
+        Serial.println("Running...");
         // run RASM to reach the desired position for the elbow
         while(myEnc2 < intDesPos -2){
           encoderRead();
@@ -107,7 +108,7 @@ void loop(void){
             break; // break from the while loop
           }
           
-          double t = micros()/1000000.0;  // read the current time
+      /*    double t = micros()/1000000.0;  // read the current time
           angle = myEnc2 *0.35; // degrees    
           vel = (angle - oldAngle)/(t - tOld);
           double accel = (vel - oldVel)/(t - tOld);
@@ -122,8 +123,8 @@ void loop(void){
 
           // set speed to the elbow motor;
           md.setM1Speed(M);
-          md.setM1Brake();
-    
+          md.setM1Brake(); */
+                          
           // print values
           //Serial.print("The M is\t"); Serial.println(M);
           //Serial.print("The error: "); Serial.println(error);
@@ -131,8 +132,17 @@ void loop(void){
           //Serial.print("time : ");Serial.print(t); Serial.print("\t time old: "); Serial.println(tOld);      
           //Serial.print("The current Position: ");Serial.println(myEnc2);
           //Serial.print("The velocity: ");  
-          Serial.print(accel);Serial.print("\t\t");Serial.print(vel);Serial.print("\t"); Serial.println(angle);
+          //Serial.print(accel);Serial.print("\t\t");Serial.print(vel);Serial.print("\t"); Serial.println(angle);
           
+          if(i>125){
+            i = 125;
+          }            
+          md.setM1Speed(i);
+          delay(5);
+          encoderRead();
+
+          angle = myEnc2 *0.35; // degrees
+          Serial.print(intDesAngle); Serial.print("\t"); Serial.println(angle);
           // save current time and position to old time and old position
           tOld = t;
           posOld = myEnc2;
@@ -149,7 +159,7 @@ void loop(void){
     c == '9';   
   } // end for c = 2
 
-    // c = 3
+ /*   // c = 3
     if(c == '3'){
     double tOld = 0;
     encoderRead();
@@ -175,6 +185,7 @@ void loop(void){
       md.setM1Speed(M);
       md.setM1Brake();
 
+      // ****** SERIAL PRINT READING OUTPUT ****** //
       //Serial.print("The M is\t");      Serial.println(M);
       //Serial.print("The error: ");      Serial.println(error);
       //Serial.print("\tThe d_error: ");
@@ -193,14 +204,14 @@ void loop(void){
     md.setM1Brake();
     md.setM1Speed(0);
     c == '9';   
-  } // end for c = 3
+  } // end for c = 3 */
 
   if(c == '4'){
     while(c == '4'){
     encoderRead();
     //Serial.print("The current Position: ");Serial.println(myEnc1);
     //delay(500);
-    //readCommand();
+    readCommand();
     }
   }
 
@@ -258,9 +269,9 @@ void loop(void){
   void encoderRead(){
     myEnc1 = analogRead(enc1);
     myEnc2 = analogRead(enc2);
-   Serial.print("Encoder 1: ");
+   /*Serial.print("Encoder 1: ");
     Serial.print(myEnc1);
     Serial.print("\tEncoder 2: ");
-    Serial.println(myEnc2);
+    Serial.println(myEnc2); */
   } // end of encoder read
 

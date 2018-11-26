@@ -36,7 +36,7 @@ void setup(void){
 void loop(void){
   //PUT YOUR MAIN CODE HERE, TO RUN REPEATEDLY
   int i = 0;
- while(i<400){
+ while(i<255){
    setM1aSpeed(i);
    delay(100);
    i++;
